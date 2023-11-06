@@ -982,13 +982,10 @@
         }
 
         .v-sep>* {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         @media (min-width:768px) {
-            .v-sep>* {
-                margin-bottom: 40px;
-            }
         }
 
         .v-sep>*:last-child {
@@ -3715,10 +3712,6 @@
             color: var(--black)
         }
 
-        .nav-menu .btn {
-            margin-top: 5px
-        }
-
         @media (max-width:767px) {
 
             
@@ -3733,7 +3726,7 @@
             }
 
             .language-container__selector {
-                padding: 0 29px 0 0
+                padding: 0 20px 0 0
             }
 
             .nav {
@@ -4050,6 +4043,46 @@
             
 
 
+        }
+    </style>
+    <style>
+        .top__static-container{
+            display: flex;
+            justify-content: right;
+            background: #00344F;
+            /* padding: 7px 16px 6px 28px; */
+            padding-right:16px;
+            padding-left:28px;
+            height: 28px;
+            align-items: center;
+        }
+
+        .top__static-links {
+            display: none
+        }
+
+        @media (min-width:768px)  {
+            .top__static-container{
+                justify-content: space-between;
+                /* padding: 10px 10px 10px 28px; */
+                padding-right:10px;
+                padding-left:28px;
+                height: 38px;
+            }
+
+            .top__static-links{
+                display: flex;
+                gap: 32px;
+            }
+        }
+
+        .top__static-container .text-element{
+            color: var(--white);
+            font-family: Roboto;
+            font-size: 15px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
         }
     </style>
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
