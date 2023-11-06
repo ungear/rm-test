@@ -982,10 +982,13 @@
         }
 
         .v-sep>* {
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }
 
         @media (min-width:768px) {
+            .v-sep>* {
+            margin-bottom: 15px;
+        }
         }
 
         .v-sep>*:last-child {
@@ -3647,7 +3650,7 @@
             border: 1px solid #dfdfdf;
             border-radius: 18px;
             max-height: 36px;
-            padding-left: 16px
+            padding-left: 7px;
         }
 
         .search-widget__input {
@@ -3666,8 +3669,7 @@
 
         .mobile-menu {
             color: var(--blue-sections);
-            margin-top: 2px;
-            font-size: 17px
+            font-size: 17px;
         }
 
         .topbar__explore {
@@ -3675,9 +3677,9 @@
             font-family: "Roboto";
             font-weight: 700;
             font-size: 15px;
-            line-height: 18px;
+            line-height: 22px;
             color: #000000;
-            margin: 0 36px
+            margin: 0 44px 0 40px;
         }
 
         .topbar__explore:hover {
@@ -3731,7 +3733,7 @@
 
             .nav {
                 margin-bottom: 18px;
-                padding: 25px 0px 17px
+                padding: 25px 0px 11px;
             }
 
             .top-static__background {
@@ -3770,9 +3772,8 @@
             }
 
             .search-widget {
-                margin-top: 4px;
-                width: 284px;
-                height: 39px
+                width: 281px;
+                height: 42px;
             }
 
             .topbar__hamburger {
@@ -3780,7 +3781,7 @@
             }
 
             .topbar__explore {
-                display: block
+                display: flex;
             }
         }
 
@@ -4083,6 +4084,36 @@
             font-style: normal;
             font-weight: 400;
             line-height: normal;
+        }
+
+        .topbar__explore:after{
+            content: "";
+            display: inline-block;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIj48ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfNzc3MF8yODEpIj48cGF0aCBkPSJNNy40MSA4LjU5MDA5TDEyIDEzLjE3MDFMMTYuNTkgOC41OTAwOUwxOCAxMC4wMDAxTDEyIDE2LjAwMDFMNiAxMC4wMDAxTDcuNDEgOC41OTAwOVoiIGZpbGw9ImJsYWNrIi8+PC9nPjxkZWZzPjxjbGlwUGF0aCBpZD0iY2xpcDBfNzc3MF8yODEiPjxyZWN0IHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0id2hpdGUiLz48L2NsaXBQYXRoPjwvZGVmcz48L3N2Zz4=);
+            width: 24px;
+            height: 24px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-left: 11px;
+        }
+
+        .nav-menu .btn{
+            font-family: Roboto;
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        .fa-search:before{
+            content: "";
+            display: inline-block;
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNyIgaGVpZ2h0PSIxNyIgdmlld0JveD0iMCAwIDE3IDE3IiBmaWxsPSJub25lIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEzLjYxOSAxMi4zODA5TDE2Ljc2NSAxNS41MjM2QzE3LjA4MTggMTUuODYxIDE3LjA4MTggMTYuMzg4MyAxNi43NDM5IDE2Ljc0NjlDMTYuNTk2MSAxNi45MTU2IDE2LjM4NSAxNyAxNi4xNTI3IDE3QzE1Ljk0MTYgMTcgMTUuNzMwNCAxNi45MTU2IDE1LjU2MTUgMTYuNzQ2OUwxMi40MTU0IDEzLjYwNDJDMTEuMDY0MSAxNC42Nzk5IDkuMzc0OTEgMTUuMjcwNSA3LjY0MzUxIDE1LjI3MDVDNS41OTUzOCAxNS4yNzA1IDMuNjczOTUgMTQuNDY5IDIuMjM4MTUgMTMuMDM0N0MwLjgwMjM1NyAxMS41Nzk0IDAgOS42ODExNCAwIDcuNjM1MjRDMCA1LjU4OTMzIDAuODAyMzU3IDMuNjY5OTggMi4yMzgxNSAyLjIzNTczQzMuNjk1MDYgMC44MDE0ODkgNS41OTUzOCAwIDcuNjQzNTEgMEM5LjY5MTYzIDAgMTEuNjEzMSAwLjgwMTQ4OSAxMy4wNDg5IDIuMjM1NzNDMTUuNzkzOCA0Ljk1NjU4IDE2LjAyNiA5LjM4NTg2IDEzLjYxOSAxMi4zODA5Wk0xMS44NjY1IDExLjgxMTNDMTIuOTg1NiAxMC42OTM1IDEzLjU5NzkgOS4xOTU5NCAxMy41OTc5IDcuNjE0MDVDMTMuNTk3OSA2LjAzMjE3IDEyLjk4NTYgNC41MzQ2NSAxMS44NjY1IDMuNDE2NzhDMTAuNzQ3NCAyLjI5ODkyIDkuMjQ4MjYgMS42ODcyNiA3LjY2NDY2IDEuNjg3MjZDNi4wODEwNiAxLjY4NzI2IDQuNTgxOTIgMi4yOTg5MiAzLjQ2Mjg1IDMuNDE2NzhDMi4zNDM3NyA0LjUzNDY1IDEuNzMxNDUgNi4wMzIxNyAxLjczMTQ1IDcuNjE0MDVDMS43MzE0NSA5LjE5NTk0IDIuMzQzNzcgMTAuNjkzNSAzLjQ2Mjg1IDExLjgxMTNDNC41ODE5MiAxMi45MjkyIDYuMDgxMDYgMTMuNTQwOSA3LjY2NDY2IDEzLjU0MDlDOS4yNDgyNiAxMy41NDA5IDEwLjc0NzQgMTIuOTI5MiAxMS44NjY1IDExLjgxMTNaIiBmaWxsPSIjNjc4Nzk3Ii8+PC9zdmc+);
+            width: 16px;
+            height: 16px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-left: 11px;
         }
     </style>
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
