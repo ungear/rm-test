@@ -3808,7 +3808,7 @@
 
         .home__wrapper {
             background-color: var(--background-grey);
-            padding: 15px 10px;
+            padding: 13px 10px;
             max-width: 1225px;
             margin: auto
         }
@@ -4105,7 +4105,7 @@
             line-height: normal;
         }
 
-        .fa-search:before{
+        .fa-search::before{
             content: "";
             display: inline-block;
             background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNyIgaGVpZ2h0PSIxNyIgdmlld0JveD0iMCAwIDE3IDE3IiBmaWxsPSJub25lIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTEzLjYxOSAxMi4zODA5TDE2Ljc2NSAxNS41MjM2QzE3LjA4MTggMTUuODYxIDE3LjA4MTggMTYuMzg4MyAxNi43NDM5IDE2Ljc0NjlDMTYuNTk2MSAxNi45MTU2IDE2LjM4NSAxNyAxNi4xNTI3IDE3QzE1Ljk0MTYgMTcgMTUuNzMwNCAxNi45MTU2IDE1LjU2MTUgMTYuNzQ2OUwxMi40MTU0IDEzLjYwNDJDMTEuMDY0MSAxNC42Nzk5IDkuMzc0OTEgMTUuMjcwNSA3LjY0MzUxIDE1LjI3MDVDNS41OTUzOCAxNS4yNzA1IDMuNjczOTUgMTQuNDY5IDIuMjM4MTUgMTMuMDM0N0MwLjgwMjM1NyAxMS41Nzk0IDAgOS42ODExNCAwIDcuNjM1MjRDMCA1LjU4OTMzIDAuODAyMzU3IDMuNjY5OTggMi4yMzgxNSAyLjIzNTczQzMuNjk1MDYgMC44MDE0ODkgNS41OTUzOCAwIDcuNjQzNTEgMEM5LjY5MTYzIDAgMTEuNjEzMSAwLjgwMTQ4OSAxMy4wNDg5IDIuMjM1NzNDMTUuNzkzOCA0Ljk1NjU4IDE2LjAyNiA5LjM4NTg2IDEzLjYxOSAxMi4zODA5Wk0xMS44NjY1IDExLjgxMTNDMTIuOTg1NiAxMC42OTM1IDEzLjU5NzkgOS4xOTU5NCAxMy41OTc5IDcuNjE0MDVDMTMuNTk3OSA2LjAzMjE3IDEyLjk4NTYgNC41MzQ2NSAxMS44NjY1IDMuNDE2NzhDMTAuNzQ3NCAyLjI5ODkyIDkuMjQ4MjYgMS42ODcyNiA3LjY2NDY2IDEuNjg3MjZDNi4wODEwNiAxLjY4NzI2IDQuNTgxOTIgMi4yOTg5MiAzLjQ2Mjg1IDMuNDE2NzhDMi4zNDM3NyA0LjUzNDY1IDEuNzMxNDUgNi4wMzIxNyAxLjczMTQ1IDcuNjE0MDVDMS43MzE0NSA5LjE5NTk0IDIuMzQzNzcgMTAuNjkzNSAzLjQ2Mjg1IDExLjgxMTNDNC41ODE5MiAxMi45MjkyIDYuMDgxMDYgMTMuNTQwOSA3LjY2NDY2IDEzLjU0MDlDOS4yNDgyNiAxMy41NDA5IDEwLjc0NzQgMTIuOTI5MiAxMS44NjY1IDExLjgxMTNaIiBmaWxsPSIjNjc4Nzk3Ii8+PC9zdmc+);
@@ -4115,6 +4115,29 @@
             background-size: cover;
             margin-left: 11px;
         }
+
+        .module-headline__text.h1{
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        .module-headline__text.h1::before{
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--dark-blue);
+            margin-right: 23px
+        }
+
+        @media (min-width:768px)  {
+            .module-headline__text.h1{
+                margin-left: 15px;
+            }
+        }
+
+
     </style>
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
     <link rel="preload"
