@@ -7,9 +7,13 @@
 
     <template id="furniture-template">
       <section>
-        <div id="loader">loading...</div>
+        <div id="loader">
+          <span>loading[</span>
+          <span id="dots"></span>
+          <span>]</span>
+        </div>
         <ul id="list"></ul>
-        <button id="button">Load more</div>
+        <button id="button" style="display: none">Load More</div>
       </section>
     </template>
 
@@ -52,10 +56,17 @@
           }
           async run(){
             this.showLoader();
-            this.items = await this.furnitureService.getItems();
-            this.hideLoader();
+            try{
+              this.items = await this.furnitureService.getItems();
+            } catch(error){
+              console.error('Failed to fetch furniture');
+              throw error;
+            } finally {
+              this.hideLoader();
+            }
             this.renderNextPage();
-            this.loadMoreButton.addEventListener('click', this.onLoadMoreButtonClick.bind(this))
+            this.loadMoreButton.addEventListener('click', this.onLoadMoreButtonClick.bind(this));
+            this.loadMoreButton.style.display = "block";
           }
 
           getNextPageItems(){
@@ -95,10 +106,29 @@
           }
           showLoader(){
             this.loader.style.display = 'block';
+            const dotsEl = this.loader.querySelector('#dots');
+            const dotsNumber = 10;
+            const delayMs = 100;
+            let activeIndex = 0;
+
+            this.loadingTimer = setInterval(updateDots, delayMs);
+            function updateDots(){
+              let progress = "";
+              for(let i = 0; i< dotsNumber; i++){
+                progress += i === activeIndex
+                  ? '#'
+                  : '_'
+              }
+              dotsEl.innerHTML = progress;
+              activeIndex = activeIndex === dotsNumber - 1 
+                ? 0
+                : activeIndex + 1;
+            }
           }
 
           hideLoader(){
             this.loader.style.display = 'none';
+            clearInterval(this.loadingTimer);
           }
 
           onLoadMoreButtonClick(){
