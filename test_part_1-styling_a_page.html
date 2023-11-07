@@ -3814,8 +3814,16 @@
         }
 
         .home__featured-wrapper {
-            margin-bottom: 30px
+            margin-bottom: 10px;
         }
+        
+        @media (min-width:768px) {
+            .home__featured-wrapper {
+                margin-bottom: 30px;
+            }
+        }
+
+
 
         .home__featured-wrapper .module-headline__text {
             font-family: "Roboto";
@@ -4182,8 +4190,80 @@
             margin-left: 5px;
         }
 
+        .home__events-wrapper .widget .widget__body::before{
+            margin-bottom:0;
+            display: none;
+        }
+        
+        .home__events-wrapper .widget .rm-col-left .widget__body{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
 
-        /* background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjUiIHZpZXdCb3g9IjAgMCA0IDUiIGZpbGw9Im5vbmUiPjxwYXRoIGQ9Ik0wLjUgNUwzLjUgMi41TDAuNSAwVjVaIiBmaWxsPSIjMDk0QjZEIi8+PC9zdmc+); */
+        @media (min-width:768px) {
+            .home__events-wrapper .widget .rm-col-left .widget__body{
+                flex-direction: row;;
+                justify-content: space-between;
+            }
+        }
+
+
+        .home__events-wrapper .widget .row{
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0;
+        }
+        @media (min-width:768px) {
+            .home__events-wrapper .widget .row {
+                margin-left:2px;
+            }
+        }
+
+        .home__events-wrapper .widget .row .rm-col-left {
+            margin-bottom: 14px;
+        }
+        .home__events-wrapper .widget .row .rm-col-left .custom-field-custom-field-event-date {
+            display: flex;
+            justify-content: center;
+            margin: 0;
+        }
+        .home__events-wrapper .widget .row .rm-col-left .custom-field-custom-field-event-date::before{
+            content: "";
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDE0IDE0IiBmaWxsPSJub25lIj48ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfNzc3MF82KSI+PHBhdGggZD0iTTExLjY2NjYgMS43NTAwNEgxMS4wODMzVjAuNTgzMzc0SDkuOTE2NjNWMS43NTAwNEg0LjA4MzI5VjAuNTgzMzc0SDIuOTE2NjNWMS43NTAwNEgyLjMzMzI5QzEuNjkxNjMgMS43NTAwNCAxLjE2NjYzIDIuMjc1MDQgMS4xNjY2MyAyLjkxNjcxVjEyLjI1QzEuMTY2NjMgMTIuODkxNyAxLjY5MTYzIDEzLjQxNjcgMi4zMzMyOSAxMy40MTY3SDExLjY2NjZDMTIuMzA4MyAxMy40MTY3IDEyLjgzMzMgMTIuODkxNyAxMi44MzMzIDEyLjI1VjIuOTE2NzFDMTIuODMzMyAyLjI3NTA0IDEyLjMwODMgMS43NTAwNCAxMS42NjY2IDEuNzUwMDRaTTExLjY2NjYgMTIuMjVIMi4zMzMyOVY0LjY2NjcxSDExLjY2NjZWMTIuMjVaIiBmaWxsPSIjMDk0QjZEIi8+PC9nPjxkZWZzPjxjbGlwUGF0aCBpZD0iY2xpcDBfNzc3MF82Ij48cmVjdCB3aWR0aD0iMTQiIGhlaWdodD0iMTQiIGZpbGw9IndoaXRlIi8+PC9jbGlwUGF0aD48L2RlZnM+PC9zdmc+);
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            margin-right: 7px;
+        }
+        .home__events-wrapper .widget .row .rm-col-left .custom-field-custom-fieldlocation {
+            display: flex;
+            justify-content: center;
+            margin-top: 2px;
+        }
+        @media (min-width:768px) {
+            .home__events-wrapper .widget .row .rm-col-left .custom-field-custom-fieldlocation {
+                margin: 0;
+            }
+        }
+        .home__events-wrapper .widget .row .rm-col-left .custom-field-custom-fieldlocation::before{
+            content: "";
+            background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxNSIgdmlld0JveD0iMCAwIDEwIDE1IiBmaWxsPSJub25lIj48cGF0aCBkPSJNNSAwQzIuMjM1NzEgMCAwIDIuMzQ3NSAwIDUuMjVDMCA5LjE4NzUgNSAxNSA1IDE1QzUgMTUgMTAgOS4xODc1IDEwIDUuMjVDMTAgMi4zNDc1IDcuNzY0MjkgMCA1IDBaTTUgNy4xMjVDNC4wMTQyOSA3LjEyNSAzLjIxNDI5IDYuMjg1IDMuMjE0MjkgNS4yNUMzLjIxNDI5IDQuMjE1IDQuMDE0MjkgMy4zNzUgNSAzLjM3NUM1Ljk4NTcxIDMuMzc1IDYuNzg1NzEgNC4yMTUgNi43ODU3MSA1LjI1QzYuNzg1NzEgNi4yODUgNS45ODU3MSA3LjEyNSA1IDcuMTI1WiIgZmlsbD0iIzA5NEI2RCIvPjwvc3ZnPg==);
+            display: inline-block;
+            width: 10px;
+            height: 15px;
+            margin-right: 7px;
+        }
+        .home__events-wrapper .widget .row .rm-col-center{
+            flex: 0 1 154px;
+        }
+
+        .home__events-wrapper .widget .row .rm-col-right{
+            display: flex;
+            flex: 1 0;
+        }
+        
+
     </style>
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
     <link rel="preload"
