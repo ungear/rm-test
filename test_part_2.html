@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+
+<html>
+  <head></head>
+  <body>
+    <main id="furniture"></main>
+
+    <template id="furniture-template">
+      <section>
+        <div id="loader">loading...</div>
+        <ul id="list"></ul>
+        <button id="button">Load more</div>
+      </section>
+    </template>
+
+    <template id="furniture-item-template">
+      <li>
+        <img>
+      </li>
+    </template>
+
+    <script>
+      (function(){
+        const CONFIG = {
+          furnitureApi: 'https://api.airtable.com/v0/appElurJfZ2WmdIUg/Furniture/?api_key=keys1gmUsZYDi7y0g',
+          pageSize: 5,
+        };
+
+        class FurnitureService{
+          constructor(apiUrl){
+            this.apiUrl = apiUrl;
+          }
+          
+          getItems(){
+            return fetch(this.apiUrl)
+              .then(x => x.json())
+              .then(x => x.records)
+          }
+        }
+
+        class FurnitureRenderer{
+          constructor({furnitureService, rootEl, pageSize}){
+            this.furnitureService = furnitureService;
+            this.rootEl = rootEl;
+            const html = document.getElementById('furniture-template').content.firstElementChild.cloneNode(true);
+            this.rootEl.appendChild(html);
+            this.loader = this.rootEl.querySelector('#loader');
+            this.list = this.rootEl.querySelector('#list');
+            this.loadMoreButton = this.rootEl.querySelector('#button');
+            this.pageSize = pageSize;
+            this.lastRenderedItemIndex = null;
+          }
+          async run(){
+            this.showLoader();
+            this.items = await this.furnitureService.getItems();
+            this.hideLoader();
+            this.renderNextPage();
+            this.loadMoreButton.addEventListener('click', this.onLoadMoreButtonClick.bind(this))
+          }
+
+          getNextPageItems(){
+            const startIndex = this.lastRenderedItemIndex
+              ? this.lastRenderedItemIndex + 1
+              : 0;
+            const itemsToRender = this.items.slice(startIndex, startIndex + this.pageSize);
+            this.lastRenderedItemIndex = this.lastRenderedItemIndex
+              ? this.lastRenderedItemIndex + itemsToRender.length
+              : itemsToRender.length - 1;
+            return itemsToRender;
+          }
+
+          checkButtonCondition(){
+            if(this.lastRenderedItemIndex === this.items.length - 1){
+              this.loadMoreButton.style.display = 'none';
+            }
+          }
+
+          renderNextPage(){
+            const nextPageItems = this.getNextPageItems();
+            this.renderItems(nextPageItems);
+            this.checkButtonCondition();
+          }
+          renderItems(items){
+            items
+              .map(x => {
+                const picture = x.fields.Images[0].thumbnails.large;
+                const itemEl = document.getElementById('furniture-item-template').content.firstElementChild.cloneNode(true);
+                itemEl.querySelector('img').src = picture.url;
+                itemEl.querySelector('img').alt = x.fields.Name;
+                return itemEl;
+              })
+              .forEach(x => { 
+                this.list.appendChild(x)
+              })
+          }
+          showLoader(){
+            this.loader.style.display = 'block';
+          }
+
+          hideLoader(){
+            this.loader.style.display = 'none';
+          }
+
+          onLoadMoreButtonClick(){
+            this.renderNextPage();
+          }
+        }
+
+        runApp(CONFIG);
+
+        function runApp(config){
+          const rootEl = document.getElementById('furniture');
+          const furnitureService = new FurnitureService(config.furnitureApi);
+          const furnitureRenderer = new FurnitureRenderer({ furnitureService, rootEl, pageSize: config.pageSize });
+          furnitureRenderer.run();
+        }
+      })()
+    </script>
+  </body>
+</html>
