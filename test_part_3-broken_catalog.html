@@ -27,8 +27,9 @@
             productsDisplayed = 0;
             for (let index = 1; index < nodes.length; index++) {
                 const node = nodes[index];
-                productsDisplayed++;
-                if (node.dataset.altname.includes(filterValue)) {
+                const isMatch = node.dataset.altname.toLowerCase().includes(filterValue) > 0;
+                if (isMatch) {
+                    productsDisplayed++;
                     node.className="";
                 }                
             }
@@ -39,13 +40,13 @@
         const filterFurniture = () => {
             cleanRecords();
             const inputFilter = document.getElementById("myInput");
-            const filterValue = inputFilter.value?.trim() ?? '';
+            const filterValue = inputFilter.value?.trim().toLowerCase() ?? '';
             filterRecords(filterValue);
             checkEmptyList();
         }
 
         const checkEmptyList = () => {
-            document.querySelector('#empty-list-message').className = productsDisplayed > 0 ? "hidden" : "hidden";
+            document.querySelector('#empty-list-message').className = productsDisplayed > 0 ? "hidden" : "";
         } 
     </script>
 </head>
