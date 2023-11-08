@@ -13,32 +13,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Debugging Test - Part 3</title>
     <script type="text/javascript">
+        
         let productsDisplayed = 0;
-        const cleanRecords = () => {
-            const nodes = document.querySelectorAll('#furniture-list > div');
-            for (let index = 0; index < nodes.length; index++) {
-                const node = nodes[index];
-                node.className="hidden";                
-            }
-        }
 
         const filterRecords = (filterValue) => {
             const nodes = document.querySelectorAll('#furniture-list > div');
             productsDisplayed = 0;
-            for (let index = 1; index < nodes.length; index++) {
+            for (let index = 0; index < nodes.length; index++) {
                 const node = nodes[index];
-                const isMatch = node.dataset.altname.toLowerCase().includes(filterValue) > 0;
-                if (isMatch) {
+                const name = node.querySelector("p")?.innerText;
+                if(!name) continue;
+                const isVisible = name.toLowerCase().includes(filterValue) > 0;
+                node.className = isVisible
+                    ? ""
+                    : "hidden";
+                
+                if (isVisible) {
                     productsDisplayed++;
-                    node.className="";
-                }                
+                }         
             }
-            
         }
 
         // Function to filter furniture values
         const filterFurniture = () => {
-            cleanRecords();
             const inputFilter = document.getElementById("myInput");
             const filterValue = inputFilter.value?.trim().toLowerCase() ?? '';
             filterRecords(filterValue);
