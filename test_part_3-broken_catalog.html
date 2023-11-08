@@ -13,43 +13,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Debugging Test - Part 3</title>
     <script type="text/javascript">
-        const filterRecords = (filterValue) => {
-            const nodes = document.querySelectorAll('#furniture-list > div');
-            let productsDisplayed = 0;
-            for (let index = 0; index < nodes.length; index++) {
-                const node = nodes[index];
-                const name = node.querySelector("p")?.innerText;
-                if(!name) continue;
-                const isVisible = name.toLowerCase().includes(filterValue) > 0;
-                node.className = isVisible
-                    ? ""
-                    : "hidden";
-                
-                if (isVisible) {
-                    productsDisplayed++;
-                }         
+        // IIFE to keep our code isolated from other scripts on the page
+        (function(){
+            // nodesMap is a Hashmap having a furniture's name is a key and HTML Node as value.
+            // Is allows us significantly reduce number of DOM related operations 
+            // (like .querySelector()) when performing search.
+            // It's supposed to improve performance if the page has the huge number of furniture items
+            // or if searching is triggered frequently.
+            // We assume that the furniture items have unique names 
+            // (otherwice the hashmap's value should be an array of Nodes).
+            const nodesMap = {};
+
+            const filterRecords = (filterValue) => {
+                let productsDisplayed = 0;
+                for (const name in nodesMap) {
+                    const isVisible = name.toLowerCase().includes(filterValue) > 0;
+                    nodesMap[name].className = isVisible
+                        ? ""
+                        : "hidden";
+                    
+                    if (isVisible) {
+                        productsDisplayed++;
+                    }         
+                }
+                return productsDisplayed;
             }
-            return productsDisplayed;
-        }
 
-        // Function to filter furniture values
-        const filterFurniture = () => {
-            const inputFilter = document.getElementById("myInput");
-            const filterValue = inputFilter.value?.trim().toLowerCase() ?? '';
-            const productsDisplayed = filterRecords(filterValue);
-            checkEmptyList(productsDisplayed);
-        }
+            // Function to filter furniture values
+            const filterFurniture = (event) => {
+                const filterValue = event.target.value?.trim().toLowerCase() ?? '';
+                const productsDisplayed = filterRecords(filterValue);
+                checkEmptyList(productsDisplayed);
+            }
 
-        const checkEmptyList = (productsDisplayed) => {
-            document.querySelector('#empty-list-message').className = productsDisplayed > 0 ? "hidden" : "";
-        } 
+            const checkEmptyList = (productsDisplayed) => {
+                document.querySelector('#empty-list-message').className = productsDisplayed > 0 ? "hidden" : "";
+            } 
+
+            function init(){
+                document.getElementById('myInput').addEventListener("keyup", filterFurniture);
+                const nodes = document.querySelectorAll('#furniture-list > div');
+                Array.from(nodes).forEach(el => {
+                    const name = el.querySelector("p")?.innerText;
+                    nodesMap[name] = el;
+                })
+            }
+
+            document.addEventListener("DOMContentLoaded", init);
+        })()
+        
     </script>
 </head>
 
 <body>
     <div class="container">
         <h1>Furniture product list</h1>
-        <input type="text" id="myInput" onkeyup="filterFurniture()" placeholder="Search for furnitures..."
+        <input type="text" id="myInput" placeholder="Search for furnitures..."
             title="Type in a name">
         <div id="furniture-list">
             <div data-index="0" data-altname="Drux,table lamp">
