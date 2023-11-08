@@ -3611,8 +3611,16 @@
 
         .nav {
             background: #F6F6F6;
-            padding: 9px 21px 12px 20px;
+            padding: 9px 21px 16px 20px;
             margin-bottom: 0
+        }
+        
+        @media (min-width:768px) {
+            .nav {
+                background: #F6F6F6;
+                padding: 9px 21px 12px 20px;
+                margin-bottom: 0
+            }
         }
 
         .logo__images {
@@ -3833,11 +3841,17 @@
         }
 
         .ad-wrapper {
-            padding: 10px 26px 44px;
+            padding: 14px 26px 36px;
             background-color: var(--white);
             margin: auto;
             text-align: center
         }
+        @media (min-width:768px) {
+            .ad-wrapper {
+                padding: 10px 26px 44px;
+            }
+        }
+
 
         .home__featured-wrapper {
             margin-bottom: 8px;
