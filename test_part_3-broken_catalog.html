@@ -13,12 +13,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Debugging Test - Part 3</title>
     <script type="text/javascript">
-        
-        let productsDisplayed = 0;
-
         const filterRecords = (filterValue) => {
             const nodes = document.querySelectorAll('#furniture-list > div');
-            productsDisplayed = 0;
+            let productsDisplayed = 0;
             for (let index = 0; index < nodes.length; index++) {
                 const node = nodes[index];
                 const name = node.querySelector("p")?.innerText;
@@ -32,17 +29,18 @@
                     productsDisplayed++;
                 }         
             }
+            return productsDisplayed;
         }
 
         // Function to filter furniture values
         const filterFurniture = () => {
             const inputFilter = document.getElementById("myInput");
             const filterValue = inputFilter.value?.trim().toLowerCase() ?? '';
-            filterRecords(filterValue);
-            checkEmptyList();
+            const productsDisplayed = filterRecords(filterValue);
+            checkEmptyList(productsDisplayed);
         }
 
-        const checkEmptyList = () => {
+        const checkEmptyList = (productsDisplayed) => {
             document.querySelector('#empty-list-message').className = productsDisplayed > 0 ? "hidden" : "";
         } 
     </script>
